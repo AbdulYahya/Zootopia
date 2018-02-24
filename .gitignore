@@ -1,0 +1,12 @@
+## Directories ##
+node_modules/
+bower_components/
+build/
+
+## Files ##
+app/*/*.js
+app/*/*.js.map
+app/*.js
+app/*.js.map
+npm-debug.log
+.DS_Store

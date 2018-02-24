@@ -1,0 +1,27 @@
+{
+  "name": "zootopia",
+  "description": "A simple web application to keep track of your various zoo animals.",
+  "main": "",
+  "authors": [
+    "Abdullah Yahya"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Angular2",
+    "Zoo",
+    "Web",
+    "App",
+    "Application"
+  ],
+  "homepage": "https://github.com/AbdulYahya/Zootopia",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.0.0"
+  }
+}

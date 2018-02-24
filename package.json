@@ -1,0 +1,63 @@
+{
+  "name": "zootopia",
+  "version": "0.1.0",
+  "description": "A simple web application to keep track of your various zoo animals.",
+  "scripts": {
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "lite": "lite-server",
+    "postinstall": "typings install",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbdulYahya/zootopia.git"
+  },
+  "keywords": [
+    "Angular2",
+    "Zoo",
+    "Web",
+    "App",
+    "Application"
+  ],
+  "author": "Abdullah Yahya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AbdulYahya/zootopia/issues"
+  },
+  "homepage": "https://github.com/AbdulYahya/zootopia#readme",
+  "dependencies": {
+    "@angular/common": "^2.4.10",
+    "@angular/compiler": "^2.4.10",
+    "@angular/core": "^2.4.10",
+    "@angular/forms": "^2.4.10",
+    "@angular/http": "^2.4.10",
+    "@angular/platform-browser": "^2.4.10",
+    "@angular/platform-browser-dynamic": "^2.4.10",
+    "@angular/router": "^3.4.10",
+    "@angular/upgrade": "^2.4.10",
+    "angular-in-memory-web-api": "^0.5.3",
+    "bootstrap": "^4.0.0",
+    "core-js": "^2.5.3",
+    "reflect-metadata": "^0.1.12",
+    "rxjs": "^5.5.6",
+    "systemjs": "^0.21.0",
+    "zone.js": "^0.8.20"
+  },
+  "devDependencies": {
+    "bower-files": "^4.0.0",
+    "browser-sync": "^2.23.6",
+    "concurrently": "^3.5.1",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-shell": "^0.6.5",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "lite-server": "^2.3.0",
+    "typescript": "^2.7.2",
+    "typings": "^2.1.1"
+  }
+}

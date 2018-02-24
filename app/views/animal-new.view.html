@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <div class="card-body">
+          <h5 class="card-title">New Animal Form</h5>
+          <p class="card-text">To add a new animal, please fill out the below form and then click 'Add Animal'. Once you're done adding animals, press 'Done' to go back to the homepage.</p>
+          <form id="newAnimalForm" #animalForm="ngForm" novalidate>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="species" [(ngModel)]="animal.species" name="species" #newSpecies="ngModel" aria-describedby="speciesHelp" placeholder="Animal Species e.g., Mandrill" required minlength="2">
+                  <small [hidden]="newSpecies.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="name" [(ngModel)]="animal.name" name="name" #newName="ngModel" aria-describedby="nameHelp" placeholder="Animal Name e.g., Samwise Gamgee" required minlength="2">
+                  <small [hidden]="newName.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <input type="number" class="form-control" id="age" [(ngModel)]="animal.age" name="age" #newAge="ngModel" aria-describedby="ageHelp" placeholder="Animal Age e.g., 43" required minlength="1">
+                  <small [hidden]="newAge.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <select class="form-control text-muted" id="diet" [(ngModel)]="animal.diet" name="diet" #newDiet="ngModel" aria-describedby="dietHelp" required>
+                    <option disabled [selected] [value]="null">Animal Diet</option>
+                    <option [attr.value]="carnivore">Carnivore</option>
+                    <option [attr.value]="herbivore">Herbivore</option>
+                    <option [attr.value]="omnivore">Omnivore</option>
+                  </select>
+                  <small [hidden]="newDiet.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="location" [(ngModel)]="animal.location" name="location" #newLocation="ngModel" aria-describedby="locationHelp" placeholder="Animal Location e.g., Winterfell" required minlength="2">
+                  <small [hidden]="newLocation.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <input type="number" class="form-control" id="caretakers" [(ngModel)]="animal.caretakers" name="caretakers" #newCaretakers="ngModel" aria-describedby="caretakersHelp" placeholder="Animal Caretakers e.g., 13" required minlength="1">
+                  <small [hidden]="newCaretakers.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="sex" [(ngModel)]="animal.sex" name="sex" #newSex="ngModel" aria-describedby="sexHelp" placeholder="Animal Sex e.g., Female" required minlength="2">
+                  <small [hidden]="newSex.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="likes" [(ngModel)]="animal.likes" name="likes" #newLikes="ngModel" aria-describedby="likesHelp" placeholder="Animal Likes e.g., Fruits, Vines, etc." required minlength="2">
+                  <small [hidden]="newLikes.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="dislikes" [(ngModel)]="animal.dislikes" name="dislikes" #newDislikes="ngModel" aria-describedby="dislikesHelp" placeholder="Animal Dislikes e.g., Humans" required minlength="2">
+                  <small [hidden]="newDislikes.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                </div>
+              </li>
+            </ul>
+            <div class="card-body -mb-15">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <small class="text-muted">{{timestamp | date:"MM/dd hh:mm a"}}</small>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-info">Done</button>
+                  <button type="submit" class="btn btn-sm btn-outline-success" [disabled]="!animalForm.form.valid" (click)="submitAnimalNewForm(newSpecies.value, newName.value, newAge.value,
+                                                                                                                              newDiet.value, newLocation.value, newCaretakers.value,
+                                                                                                                              newSex.value, newLikes.value, newDislikes.value); animalForm.reset();">
+                    Add Animal
+                  </button>
+                </div>
+              </div>
+              <small [hidden]="animalForm.form.valid" class="text-muted">Form <strong>must</strong> be filled out to add an animal!</small>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

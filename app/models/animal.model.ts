@@ -9,5 +9,7 @@ export class Animal {
     public sex: string,
     public likes: string, // public likes: []?  have user separate input with commas then split string into an array?
     public dislikes: string, // public dislikes: []?
-  ) { }
+  ) {
+    // let timestamp = Date.now(); // Check this
+ }
 }

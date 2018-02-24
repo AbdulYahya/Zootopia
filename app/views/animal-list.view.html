@@ -17,9 +17,9 @@
                 <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                 <button type="button" class="btn btn-sm btn-outline-secondary" (click)="editRequested(currentAnimal)">Edit</button>
               </div>
-              <small class="text-muted">9 mins</small>
-              <!-- <small class="text-muted">{{currentAnimal.timestamp | date:'full'}}</small> -->
             </div>
+            <small class="text-muted" *ngIf="!currentAnimal.edited">Added @ {{currentAnimal.timestamp | date:"MM/dd hh:mm a"}}</small>
+            <small class="text-muted" *ngIf="currentAnimal.edited">Last updated @ {{currentAnimal.timestamp | date:"MM/dd hh:mm a"}}</small>
           </div>
         </div>
       </div>

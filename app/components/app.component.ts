@@ -7,23 +7,17 @@ import { Animal } from '../models/animal.model';
 })
 
 export class AppComponent {
-  masterAnimalList: Animal[] = [
-    // new Animal('Gorilla', 'Samwise Gamgee', 8, 'Omnivore', 'Monkey Exhibit', 5, 'Male', 'Bananas', 'Humans'),
-    // new Animal('Canine', 'Shmitty', 12, 'Omnivore', 'Canine Exhibit', 2, 'Male', 'Apples', 'Any form of physical activity'),
-    // new Animal('Feline', 'Woof', 64, 'Omnivore', 'Feline Exhibit', 23, 'Female', 'Tomatoes', 'Talking')
-  ];
-
+  animalTemplate: Animal = new Animal(null, null, null, null, null, null, null, null, null); // Required to make Angular2's ngModel work
+  masterAnimalList: Animal[] = [];
+  submitted: boolean = false;
   currentAnimal = null;
+  currentTimestamp = setInterval(() => { Date.now(); }, 1000);
 
-  editAnimal(currentAnimal) {
-    this.currentAnimal = currentAnimal;
-  }
+  editAnimal(currentAnimal) { this.currentAnimal = currentAnimal; }
 
-  finishedEditingAnimal() {
-    this.currentAnimal = null;
-  }
+  finishedEditingAnimal() { this.currentAnimal = null; }
 
-  addNewAnimal(newAnimalFromChild: Animal) {
-    this.masterAnimalList.push(newAnimalFromChild);
-  }
+  addNewAnimal(newAnimalFromChild: Animal) { this.masterAnimalList.push(newAnimalFromChild); }
+
+  onDone() { this.submitted = this.submitted ? false : true; }
 }

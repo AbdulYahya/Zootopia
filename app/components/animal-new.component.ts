@@ -7,10 +7,10 @@ import { Animal } from '../models/animal.model';
 })
 
 export class AnimalNewComponent {
+  @Input() childAnimalToAdd: Animal;
+  @Input() childDone: boolean;
   @Output() submitAnimalNewFormRequest = new EventEmitter();
-
-  timestamp = Date.now();
-  animal: Animal = new Animal(null, null, null, null, null, null, null, null, null); // Required to make Angular2's ngModel work
+  @Output() doneAnimalNewFormRequest = new EventEmitter();
 
   submitAnimalNewForm(species: string, name: string, age: number, diet: string,
                         location: string, caretakers: number, sex: string, likes: string,
@@ -20,4 +20,6 @@ export class AnimalNewComponent {
                                               dislikes);
     this.submitAnimalNewFormRequest.emit(newAnimalToAdd);
   }
+
+  doneAnimalNewForm() { this.doneAnimalNewFormRequest.emit(); }
 }

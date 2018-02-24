@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './components/app.component';
 import { AnimalListComponent } from './components/animal-list.component';
 import { AnimalNewComponent } from './components/animal-new.component';
+import { AnimalEditComponent } from './components/animal-edit.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { AnimalNewComponent } from './components/animal-new.component';
   declarations: [
     AppComponent,
     AnimalListComponent,
-    AnimalNewComponent
+    AnimalNewComponent,
+    AnimalEditComponent
   ],
   bootstrap: [ AppComponent ]
 })

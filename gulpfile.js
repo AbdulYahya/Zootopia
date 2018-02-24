@@ -22,48 +22,65 @@ const shell = require('gulp-shell');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 const utilities = require('gulp-util');
+const vinylPaths = require('vinyl-paths');
 
 const buildProduction = utilities.env.production;
 
 
 ////////////////////// TYPESCRIPT //////////////////////
 
-gulp.task('tsClean', () => {
-  return del(['app/**/**.js', 'app/**/**.js.map']);
+gulp.task('ts:clean', () => {
+  return del(['build/compiled_ts']);
 });
 
-gulp.task('tsHtmlClean', ['tsClean'], () => {
-  return del(['./build/*.html']);
+gulp.task('ts:htmlClean', ['ts:clean'], () => {
+  return del(['build/*.html']);
 });
 
-gulp.task('tsHtml', ['tsHtmlClean'], () => {
+gulp.task('ts:html', ['ts:htmlClean'], () => {
   return gulp.src('app/views/*.html')
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('build'));
 });
 
-gulp.task('ts', ['tsHtml'], shell.task([
+gulp.task('ts:compile', ['ts:html'], shell.task([
   'tsc'
 ]));
 
 
+/*
+*   Purpose: Clean up app directory
+*
+*   Issue: Not working because, by moving all of the .js & .js.map files
+*          from the app dir after the fact (ts:compile) all the links are broken
+*
+*   e.g., (main.ts): import { AppModule } from './app.module' can no longer
+*                    find .js & .js.map files because we moved them....
+*/
+
+// gulp.task('ts', ['ts:compile'], () => {
+//   return gulp.src(['app/**/**.js', 'app/**/**.js.map'])
+//     .pipe(vinylPaths(del))
+//     .pipe(gulp.dest('build/compiled_ts'));
+// });
+
 ////////////////////// BOWER //////////////////////
 
-gulp.task('jsBowerClean', () => {
-  return del(['./build/js/vendor.min.js']);
+gulp.task('bower:jsClean', () => {
+  return del(['build/js/vendor.min.js']);
 });
 
-gulp.task('jsBower', ['jsBowerClean'], () => {
+gulp.task('bower:js', ['bower:jsClean'], () => {
   return gulp.src(lib.ext('js').files)
     .pipe(concat('vendor.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('./build/js'));
+    .pipe(gulp.dest('build/js'));
 });
 
-gulp.task('cssBowerClean', () => {
+gulp.task('bower:cssClean', () => {
   return del(['./build/css/vendor.min.css']);
 });
 
-gulp.task('cssBower', ['cssBowerClean'], () => {
+gulp.task('bower:css', ['bower:cssClean'], () => {
   return gulp.src(lib.ext('css').files)
     .pipe(concat('vendor.min.css'))
     .pipe(cleanCSS({debug: true}, (details) => {
@@ -73,7 +90,7 @@ gulp.task('cssBower', ['cssBowerClean'], () => {
     .pipe(gulp.dest('./build/css'));
 });
 
-gulp.task('bower', ['jsBower', 'cssBower']);
+gulp.task('bower', ['bower:js', 'bower:css']);
 
 
 ////////////////////// SASS //////////////////////
@@ -114,10 +131,10 @@ gulp.task('serve', ['build'], () => {
   gulp.watch(['resources/styles/*.css', 'resources/styles/*.scss'], ['cssBuild']); // Reload on any CSS/SCSS changes
   gulp.watch(['resources/images/*.png', 'resources/images/*.jpg', 'resources/images/*.svg'], ['imgBuild']); // Reload on any PNG/JPG/SVG changes.
   gulp.watch(['resources/js/*.js'], ['jsBuild']); // Reload on any Vanilla JS changes.
-  gulp.watch(['app/*.ts', 'app/**/**.ts'], ['tsBuild']); // Compile & Reload on any Typescript file changes.
+  gulp.watch(['app/**/**.ts'], ['tsBuild']); // Compile & Reload on any Typescript file changes.
 });
 
-gulp.task('htmlBuild', ['ts'], () => {
+gulp.task('htmlBuild', ['ts:html'], () => {
   browserSync.reload();
 });
 
@@ -133,13 +150,13 @@ gulp.task('imgBuild', ['minifyImages'], () => {
   browserSync.reload();
 });
 
-gulp.task('tsBuild', ['ts'], () => {
+gulp.task('tsBuild', ['ts:compile'], () => {
   browserSync.reload();
 });
 
 
 ////////////////////// GLOBAL BUILD TASK //////////////////////
-gulp.task('build', ['ts'], () => {
+gulp.task('build', ['ts:compile'], () => {
   // Production tag conditionals will go here
   gulp.start('bower');
   gulp.start('sassBuild');

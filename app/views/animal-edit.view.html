@@ -72,7 +72,7 @@
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-info" (click)="editFinishedRequested(); hasBeenEdited();">Done</button>
                 </div>
-                <small class="text-muted">{{t}}</small>
+                <small class="text-muted">{{childCurrentTimestamp | date:"MM/dd hh:mm a"}}</small>
               </div>
               <small [hidden]="animalForm.form.valid" class="text-muted">Form <strong>must</strong> be filled out to add an animal!</small>
             </div>

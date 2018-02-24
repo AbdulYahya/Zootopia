@@ -8,7 +8,7 @@ import { Animal } from '../models/animal.model';;
 
 export class AnimalEditComponent {
   @Input() childAnimalToEdit: Animal;
-  @Input() childCurrentTimestamp; // = setInterval(() => Date.now(), 10);
+  @Input() childCurrentTimestamp: Date; // = setInterval(() => Date.now(), 10);
   @Output() editFinishedRequest = new EventEmitter();
 
   editFinishedRequested() { this.editFinishedRequest.emit(); }

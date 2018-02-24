@@ -11,7 +11,7 @@ export class AppComponent {
   masterAnimalList: Animal[] = [];
   submitted: boolean = false;
   currentAnimal = null;
-  currentTimestamp = setInterval(() => { Date.now(); }, 1000);
+  currentTimestamp = Date.now();
 
   editAnimal(currentAnimal) { this.currentAnimal = currentAnimal; }
 

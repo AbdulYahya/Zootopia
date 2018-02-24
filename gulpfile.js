@@ -114,7 +114,7 @@ gulp.task('serve', ['build'], () => {
   gulp.watch(['resources/styles/*.css', 'resources/styles/*.scss'], ['cssBuild']); // Reload on any CSS/SCSS changes
   gulp.watch(['resources/images/*.png', 'resources/images/*.jpg', 'resources/images/*.svg'], ['imgBuild']); // Reload on any PNG/JPG/SVG changes.
   gulp.watch(['resources/js/*.js'], ['jsBuild']); // Reload on any Vanilla JS changes.
-  gulp.watch(['app/*.ts'], ['tsBuild']); // Compile & Reload on any Typescript file changes.
+  gulp.watch(['app/*.ts', 'app/**/**.ts'], ['tsBuild']); // Compile & Reload on any Typescript file changes.
 });
 
 gulp.task('htmlBuild', ['ts'], () => {

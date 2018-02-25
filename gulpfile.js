@@ -10,7 +10,7 @@ const lib = require('bower-files')({
       "main": [
         "less/bootstrap.less",
         "dist/css/bootstrap.css",
-        'assets/js/vendor/jquery-slim.min.js',
+        "assets/js/vendor/jquery-slim.min.js",
         "assets/js/vendor/popper.min.js",
         "dist/js/bootstrap.js"
       ]
@@ -29,11 +29,11 @@ const buildProduction = utilities.env.production;
 
 ////////////////////// TYPESCRIPT //////////////////////
 
-gulp.task('ts:clean', () => {
-  return del(['build/compiled_ts']);
-});
+// gulp.task('ts:clean', () => {
+//   return del(['build/compiled_ts']);
+// });
 
-gulp.task('ts:htmlClean', ['ts:clean'], () => {
+gulp.task('ts:htmlClean', () => {
   return del(['build/*.html']);
 });
 
@@ -65,6 +65,7 @@ gulp.task('ts:compile', ['ts:html'], shell.task([
 
 ////////////////////// BOWER //////////////////////
 
+
 gulp.task('bower:jsClean', () => {
   return del(['build/js/vendor.min.js']);
 });
@@ -72,8 +73,8 @@ gulp.task('bower:jsClean', () => {
 gulp.task('bower:js', ['bower:jsClean'], () => {
   return gulp.src(lib.ext('js').files)
     .pipe(concat('vendor.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('build/js'));
+    // .pipe(uglify())
+    .pipe(gulp.dest('./build/js'));
 });
 
 gulp.task('bower:cssClean', () => {
@@ -91,6 +92,18 @@ gulp.task('bower:css', ['bower:cssClean'], () => {
 });
 
 gulp.task('bower', ['bower:js', 'bower:css']);
+
+
+////////////////////// JAVASCRIPT //////////////////
+
+gulp.task('js:clean', () => {
+  return del(['build/js/*.js', '!build/js/*.min.js']);
+});
+
+gulp.task('js:build', ['js:clean'], () => {
+  return gulp.src(['resources/js/*.js'])
+    .pipe(gulp.dest('build/js'));
+});
 
 
 ////////////////////// SASS //////////////////////
@@ -117,6 +130,7 @@ gulp.task('minifyImages', () => {
 		.pipe(gulp.dest('build/images'))
 });
 
+
 ////////////////////// SERVER //////////////////////
 
 gulp.task('serve', ['build'], () => {
@@ -138,7 +152,7 @@ gulp.task('htmlBuild', ['ts:html'], () => {
   browserSync.reload();
 });
 
-gulp.task('jsBuild', () => {
+gulp.task('jsBuild', ['js:build'], () => {
   browserSync.reload();
 });
 
@@ -159,6 +173,7 @@ gulp.task('tsBuild', ['ts:compile'], () => {
 gulp.task('build', ['ts:compile'], () => {
   // Production tag conditionals will go here
   gulp.start('bower');
+  gulp.start('js:build');
   gulp.start('sassBuild');
   gulp.start('minifyImages');
 });

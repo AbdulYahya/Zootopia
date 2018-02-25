@@ -43,9 +43,9 @@
   </section>
 
   <div class="album py-5 bg-light">
-    <animal-list [childAnimalList]="masterAnimalList" (editRequest)="editAnimal($event)"></animal-list>
+    <animal-list [childAnimalList]="masterAnimalList" [childTimestamp]="cTimestamp" (editRequest)="editAnimal($event)"></animal-list>
     <animal-new [childAnimalToAdd]="animalTemplate" [childDone]="submitted" (submitAnimalNewFormRequest)="addNewAnimal($event)" (doneAnimalNewFormRequest)="onDone()"></animal-new>
-    <animal-edit [childAnimalToEdit]="currentAnimal" [childCurrentTimestamp]="currentTimestamp" (editFinishedRequest)="finishedEditingAnimal()"></animal-edit>
+    <animal-edit [childAnimalToEdit]="currentAnimal" [childTimestamp]="cTimestamp" (editFinishedRequest)="finishedEditingAnimal()"></animal-edit>
   </div>
 </main>
 

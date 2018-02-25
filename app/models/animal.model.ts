@@ -1,7 +1,11 @@
+import { Timestamp } from '../models/timestamp.model';
+
 export class Animal {
-  public timestamp = Date.now();
+  private time: Timestamp = new Timestamp();
+
+  public timestamp: number = this.time.getTimestamp();
   public edited: boolean = false;
-  
+
   constructor(
     public species: string,
     public name: string,

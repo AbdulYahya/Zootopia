@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Animal } from '../models/animal.model';
+import { Timestamp } from '../models/timestamp.model';
 
 @Component({
   selector: 'animal-list',
@@ -8,9 +9,9 @@ import { Animal } from '../models/animal.model';
 
 export class AnimalListComponent {
   @Input() childAnimalList: Animal[];
+  @Input() childTimestamp: Timestamp;
   @Output() editRequest = new EventEmitter();
 
-  editRequested(animalToEdit: Animal) {
-    this.editRequest.emit(animalToEdit);
-  }
+  editRequested(animalToEdit: Animal) { this.editRequest.emit(animalToEdit); }
+
 }

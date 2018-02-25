@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Animal } from '../models/animal.model';
+import { Timestamp } from '../models/timestamp.model';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,13 @@ import { Animal } from '../models/animal.model';
 })
 
 export class AppComponent {
-  animalTemplate: Animal = new Animal(null, null, null, null, null, null, null, null, null); // Required to make Angular2's ngModel work
   masterAnimalList: Animal[] = [];
+  cTimestamp: Timestamp = new Timestamp();
+  
+  // Required to make Angular2's ngModel work
+  animalTemplate: Animal = new Animal(null, null, null, null, null, null, null, null, null);
   submitted: boolean = false;
   currentAnimal = null;
-  currentTimestamp = Date.now();
 
   editAnimal(currentAnimal) { this.currentAnimal = currentAnimal; }
 
@@ -20,4 +23,5 @@ export class AppComponent {
   addNewAnimal(newAnimalFromChild: Animal) { this.masterAnimalList.push(newAnimalFromChild); }
 
   onDone() { this.submitted = this.submitted ? false : true; }
+
 }

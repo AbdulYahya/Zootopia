@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Animal } from '../models/animal.model';
+import { Timestamp } from '../models/timestamp.model';
 
 @Component({
   selector: 'animal-new',

@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Animal } from '../models/animal.model';;
+import { Timestamp } from '../models/timestamp.model';
 
 @Component({
   selector: 'animal-edit',
@@ -8,13 +9,10 @@ import { Animal } from '../models/animal.model';;
 
 export class AnimalEditComponent {
   @Input() childAnimalToEdit: Animal;
-  @Input() childCurrentTimestamp: Date; // = setInterval(() => Date.now(), 10);
+  @Input() childTimestamp: Timestamp;
   @Output() editFinishedRequest = new EventEmitter();
 
   editFinishedRequested() { this.editFinishedRequest.emit(); }
 
   hasBeenEdited() { this.childAnimalToEdit.edited = true; }
-
-
-  t = console.log(this.childCurrentTimestamp);
 }

@@ -36,7 +36,9 @@
       <h1 class="jumbotron-heading">Welcome to Zootopia!</h1>
       <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
       <p>
-        <button class="btn btn-info my-2" [disabled]="submitted" (click)="onDone()">Add a new Animal</button>
+        <button type="button" class="btn btn-info my-2" (click)="onDone()" data-toggle="modal" data-target="#animalNewFormModal">
+          Add a new Animal
+        </button>
         <a href="#" class="btn btn-secondary my-2">Secondary action</a>
       </p>
     </div>
@@ -44,8 +46,12 @@
 
   <div class="album py-5 bg-light">
     <animal-list [childAnimalList]="masterAnimalList" [childTimestamp]="cTimestamp" (editRequest)="editAnimal($event)"></animal-list>
-    <animal-new [childAnimalToAdd]="animalTemplate" [childDone]="submitted" (submitAnimalNewFormRequest)="addNewAnimal($event)" (doneAnimalNewFormRequest)="onDone()"></animal-new>
-    <animal-edit [childAnimalToEdit]="currentAnimal" [childTimestamp]="cTimestamp" (editFinishedRequest)="finishedEditingAnimal()"></animal-edit>
+    <div id="animalNewFormModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addNewAnimalCentered" aria-hidden="true">
+      <animal-new [childAnimalToAdd]="animalTemplate" (submitAnimalNewFormRequest)="addNewAnimal($event)"></animal-new>
+    </div>
+    <div id="animalEditFormModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editAnimalCentered" aria-hidden="true">
+      <animal-edit [childAnimalToEdit]="currentAnimal" [childTimestamp]="cTimestamp" (editFinishedRequest)="finishedEditingAnimal()"></animal-edit>
+    </div>
   </div>
 </main>
 

@@ -13,7 +13,6 @@ export class AppComponent {
   
   // Required to make Angular2's ngModel work
   animalTemplate: Animal = new Animal(null, null, null, null, null, null, null, null, null);
-  submitted: boolean = false;
   currentAnimal = null;
 
   editAnimal(currentAnimal) { this.currentAnimal = currentAnimal; }
@@ -21,7 +20,5 @@ export class AppComponent {
   finishedEditingAnimal() { this.currentAnimal = null; }
 
   addNewAnimal(newAnimalFromChild: Animal) { this.masterAnimalList.push(newAnimalFromChild); }
-
-  onDone() { this.submitted = this.submitted ? false : true; }
 
 }

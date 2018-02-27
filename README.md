@@ -1,4 +1,4 @@
-<p align="center"><img width="12.5%" src="assets/images/Bet.png"></p>
+<p align="center"><img width="12.5%" src="resources/images/zoo_logo.svg"></p>
 <p align="center"><img width="60%" src="assets/images/BetterDoc_logo.png"></p>
  
                                  

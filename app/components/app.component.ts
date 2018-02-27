@@ -8,9 +8,11 @@ import { Timestamp } from '../models/timestamp.model';
 })
 
 export class AppComponent {
-  masterAnimalList: Animal[] = [];
+  masterAnimalList: Animal[] = [
+    new Animal("null", "null", 2, "null", "null", 1, "null", "null", "null")
+  ];
   cTimestamp: Timestamp = new Timestamp();
-  
+
   // Required to make Angular2's ngModel work
   animalTemplate: Animal = new Animal(null, null, null, null, null, null, null, null, null);
   currentAnimal = null;

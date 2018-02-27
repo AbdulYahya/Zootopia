@@ -3,87 +3,89 @@
     <div class="modal-header modal-header-animal"></div>
     <div class="modal-body">
       <div class="container" *ngIf="childAnimalToEdit">
-        <div class="card-body">
-          <h5 class="card-title">Editing {{childAnimalToEdit.name}}</h5>
-          <p class="card-text">To Edit an animal, please fill out the below form and then click 'Edit Animal'. Once you're done editing, press 'Done' to go back to the homepage.</p>
-          <form id="editAnimalForm" #animalForm="ngForm" novalidate>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="species" [(ngModel)]="childAnimalToEdit.species" name="species" #editSpecies="ngModel" value="childAnimalToEdit.species" aria-describedby="speciesHelp" placeholder="Animal Species e.g., Mandrill" required minlength="2">
-                  <small [hidden]="editSpecies.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h5 class="card-title">Editing {{childAnimalToEdit.name}}</h5>
+            <p class="card-text">To Edit an animal, please fill out the below form and then click 'Edit Animal'. Once you're done editing, press 'Done' to go back to the homepage.</p>
+            <form id="editAnimalForm" #animalForm="ngForm" novalidate>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="species" [(ngModel)]="childAnimalToEdit.species" name="species" #editSpecies="ngModel" value="childAnimalToEdit.species" aria-describedby="speciesHelp" placeholder="Animal Species e.g., Mandrill" required minlength="2">
+                    <small [hidden]="editSpecies.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="name" [(ngModel)]="childAnimalToEdit.name" name="name" #editName="ngModel" value="childAnimalToEdit.name" aria-describedby="nameHelp" placeholder="Animal Name e.g., Samwise Gamgee" required minlength="2">
+                    <small [hidden]="editName.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="form-group">
+                    <input type="number" class="form-control" id="age" [(ngModel)]="childAnimalToEdit.age" name="age" #editAge="ngModel" value="childAnimalToEdit.age" aria-describedby="ageHelp" placeholder="Animal Age e.g., 43" required minlength="1">
+                    <small [hidden]="editAge.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="form-group">
+                    <select class="form-control text-muted" id="diet" [(ngModel)]="childAnimalToEdit.diet" name="diet" #editDiet="ngModel" aria-describedby="dietHelp" required>
+                      <option disabled [value]="null">Animal Diet</option>
+                      <option [attr.value]="carnivore">Carnivore</option>
+                      <option [attr.value]="herbivore">Herbivore</option>
+                      <option [attr.value]="omnivore">Omnivore</option>
+                    </select>
+                    <small [hidden]="editDiet.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="location" [(ngModel)]="childAnimalToEdit.location" name="location" #editLocation="ngModel" value="childAnimalToEdit.location" aria-describedby="locationHelp" placeholder="Animal Location e.g., Winterfell" required minlength="2">
+                    <small [hidden]="editLocation.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="form-group">
+                    <input type="number" class="form-control" id="caretakers" [(ngModel)]="childAnimalToEdit.caretakers" name="caretakers" #editCaretakers="ngModel" value="childAnimalToEdit.caretakers" aria-describedby="caretakersHelp" placeholder="Animal Caretakers e.g., 13" required minlength="1">
+                    <small [hidden]="editCaretakers.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="sex" [(ngModel)]="childAnimalToEdit.sex" name="sex" #editSex="ngModel" aria-describedby="sexHelp" value="childAnimalToEdit.sex" placeholder="Animal Sex e.g., Female" required minlength="2">
+                    <small [hidden]="editSex.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="likes" [(ngModel)]="childAnimalToEdit.likes" name="likes" #editLikes="ngModel" aria-describedby="likesHelp" value="childAnimalToEdit.likes" placeholder="Animal Likes e.g., Fruits, Vines, etc." required minlength="2">
+                    <small [hidden]="editLikes.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="dislikes" [(ngModel)]="childAnimalToEdit.dislikes" name="dislikes" #editDislikes="ngModel" value="childAnimalToEdit.dislikes" aria-describedby="dislikesHelp" placeholder="Animal Dislikes e.g., Humans" required minlength="2">
+                    <small [hidden]="editDislikes.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
+                  </div>
+                </li>
+              </ul>
+              <div class="card-body -mb-15">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-info" (click)="editFinishedRequested(); hasBeenEdited();" data-dismiss="modal">Finish Editing</button>
+                  </div>
+                  <small class="text-muted">{{childTimestamp.getTimestamp() | date:"MM/dd hh:mm a"}}</small>
                 </div>
-              </li>
-              <li class="list-group-item">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="name" [(ngModel)]="childAnimalToEdit.name" name="name" #editName="ngModel" value="childAnimalToEdit.name" aria-describedby="nameHelp" placeholder="Animal Name e.g., Samwise Gamgee" required minlength="2">
-                  <small [hidden]="editName.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <div class="form-group">
-                  <input type="number" class="form-control" id="age" [(ngModel)]="childAnimalToEdit.age" name="age" #editAge="ngModel" value="childAnimalToEdit.age" aria-describedby="ageHelp" placeholder="Animal Age e.g., 43" required minlength="1">
-                  <small [hidden]="editAge.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <div class="form-group">
-                  <select class="form-control text-muted" id="diet" [(ngModel)]="childAnimalToEdit.diet" name="diet" #editDiet="ngModel" aria-describedby="dietHelp" required>
-                    <option disabled [value]="null">Animal Diet</option>
-                    <option [attr.value]="carnivore">Carnivore</option>
-                    <option [attr.value]="herbivore">Herbivore</option>
-                    <option [attr.value]="omnivore">Omnivore</option>
-                  </select>
-                  <small [hidden]="editDiet.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="location" [(ngModel)]="childAnimalToEdit.location" name="location" #editLocation="ngModel" value="childAnimalToEdit.location" aria-describedby="locationHelp" placeholder="Animal Location e.g., Winterfell" required minlength="2">
-                  <small [hidden]="editLocation.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <div class="form-group">
-                  <input type="number" class="form-control" id="caretakers" [(ngModel)]="childAnimalToEdit.caretakers" name="caretakers" #editCaretakers="ngModel" value="childAnimalToEdit.caretakers" aria-describedby="caretakersHelp" placeholder="Animal Caretakers e.g., 13" required minlength="1">
-                  <small [hidden]="editCaretakers.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="sex" [(ngModel)]="childAnimalToEdit.sex" name="sex" #editSex="ngModel" aria-describedby="sexHelp" value="childAnimalToEdit.sex" placeholder="Animal Sex e.g., Female" required minlength="2">
-                  <small [hidden]="editSex.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="likes" [(ngModel)]="childAnimalToEdit.likes" name="likes" #editLikes="ngModel" aria-describedby="likesHelp" value="childAnimalToEdit.likes" placeholder="Animal Likes e.g., Fruits, Vines, etc." required minlength="2">
-                  <small [hidden]="editLikes.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="dislikes" [(ngModel)]="childAnimalToEdit.dislikes" name="dislikes" #editDislikes="ngModel" value="childAnimalToEdit.dislikes" aria-describedby="dislikesHelp" placeholder="Animal Dislikes e.g., Humans" required minlength="2">
-                  <small [hidden]="editDislikes.valid" class="form-text text-muted"><strong>Must</strong> be at-least 2 characters in length!</small>
-                </div>
-              </li>
-            </ul>
-            <div class="card-body -mb-15">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-info" (click)="editFinishedRequested(); hasBeenEdited();">Done</button>
-                </div>
-                <small class="text-muted">{{childTimestamp.getTimestamp() | date:"MM/dd hh:mm a"}}</small>
+                <small [hidden]="animalForm.form.valid" class="text-muted">Form <strong>must</strong> be filled out to add an animal!</small>
               </div>
-              <small [hidden]="animalForm.form.valid" class="text-muted">Form <strong>must</strong> be filled out to add an animal!</small>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-    <div class="modal-footer modal-footer-animal">
-      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button> -->
-    </div>
+    <div class="modal-footer modal-footer-animal"></div>
   </div>
 </div>

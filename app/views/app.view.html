@@ -43,8 +43,12 @@
 
   <div class="album py-5 bg-light">
     <animal-list [childAnimalList]="masterAnimalList" [childTimestamp]="cTimestamp" (editRequest)="editAnimal($event)"></animal-list>
-    <animal-new [childAnimalToAdd]="animalTemplate" [childDone]="submitted" (submitAnimalNewFormRequest)="addNewAnimal($event)" (doneAnimalNewFormRequest)="onDone()"></animal-new>
-    <animal-edit [childAnimalToEdit]="currentAnimal" [childTimestamp]="cTimestamp" (editFinishedRequest)="finishedEditingAnimal()"></animal-edit>
+    <div id="animalNewFormModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addNewAnimalCentered" aria-hidden="true">
+      <animal-new [childAnimalToAdd]="animalTemplate" (submitAnimalNewFormRequest)="addNewAnimal($event)"></animal-new>
+    </div>
+    <div id="animalEditFormModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editAnimalCentered" aria-hidden="true">
+      <animal-edit [childAnimalToEdit]="currentAnimal" [childTimestamp]="cTimestamp" (editFinishedRequest)="finishedEditingAnimal()"></animal-edit>
+    </div>
   </div>
 </main>
 

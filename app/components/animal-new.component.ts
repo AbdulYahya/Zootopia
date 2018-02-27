@@ -9,9 +9,7 @@ import { Timestamp } from '../models/timestamp.model';
 
 export class AnimalNewComponent {
   @Input() childAnimalToAdd: Animal;
-  @Input() childDone: boolean;
   @Output() submitAnimalNewFormRequest = new EventEmitter();
-  @Output() doneAnimalNewFormRequest = new EventEmitter();
 
   submitAnimalNewForm(species: string, name: string, age: number, diet: string,
                         location: string, caretakers: number, sex: string, likes: string,
@@ -22,5 +20,4 @@ export class AnimalNewComponent {
     this.submitAnimalNewFormRequest.emit(newAnimalToAdd);
   }
 
-  doneAnimalNewForm() { this.doneAnimalNewFormRequest.emit(); }
 }

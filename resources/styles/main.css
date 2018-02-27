@@ -53,3 +53,16 @@ footer p {
 .-mb-15 {
   margin-bottom: -1.5rem!important;
 }
+
+.modal-content-animal {
+  background-color: transparent;
+  border: 1px transparent;
+}
+
+.modal-header-animal {
+  border-bottom: none;
+}
+
+.modal-footer-animal {
+  border-top: none;
+}

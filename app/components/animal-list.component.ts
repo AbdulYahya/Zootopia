@@ -12,6 +12,12 @@ export class AnimalListComponent {
   @Input() childTimestamp: Timestamp;
   @Output() editRequest = new EventEmitter();
 
+  filterByAge: string = "noFilter";
+
+  onChange(optionFromMenu) {
+    this.filterByAge = optionFromMenu;
+  }
+
   editRequested(animalToEdit: Animal) { this.editRequest.emit(animalToEdit); }
 
 }

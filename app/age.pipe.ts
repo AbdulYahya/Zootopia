@@ -11,16 +11,16 @@ export class AgePipe implements PipeTransform {
 
   transform(input: Animal[], filterByAge) {
     switch (filterByAge) {
-      case (filterByAge < 2):
+      case 'youngFilter':
         this.output = input.filter((animal, array) => {
-          return (animal.age === filterByAge) ? animal : null;
+          return (animal.age < 2) ? animal : null;
         });
-
+        console.log(this.output);
         return this.output;
 
-      case (filterByAge >= 2):
+      case 'matureFilter':
         this.output = input.filter((animal, array) => {
-          return (animal.age === filterByAge) ? animal : null;
+          return (animal.age >= 2) ? animal : null;
         });
 
         return this.output;
@@ -28,6 +28,5 @@ export class AgePipe implements PipeTransform {
       default:
         return input;
     }
-  
   }
 }

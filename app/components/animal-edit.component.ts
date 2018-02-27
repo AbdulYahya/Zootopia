@@ -10,9 +10,6 @@ import { Timestamp } from '../models/timestamp.model';
 export class AnimalEditComponent {
   @Input() childAnimalToEdit: Animal;
   @Input() childTimestamp: Timestamp;
-  @Output() editFinishedRequest = new EventEmitter();
-
-  editFinishedRequested() { this.editFinishedRequest.emit(); }
 
   hasBeenEdited() { this.childAnimalToEdit.edited = true; }
 }

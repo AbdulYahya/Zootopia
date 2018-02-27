@@ -2,15 +2,15 @@
   <div class="modal-content modal-content-animal">
     <div class="modal-header modal-header-animal"></div>
     <div class="modal-body">
-      <div class="container" *ngIf="childAnimalToEdit">
-        <div class="card mb-4 box-shadow">
+      <div class="container" >
+        <div class="card mb-4 box-shadow" *ngIf="childAnimalToEdit">
           <div class="card-body">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
             <h5 class="card-title">Editing {{childAnimalToEdit.name}}</h5>
             <p class="card-text">To Edit an animal, please fill out the below form and then click 'Edit Animal'. Once you're done editing, press 'Done' to go back to the homepage.</p>
-            <form id="editAnimalForm" #animalForm="ngForm" novalidate>
+            <form id="editAnimalForm" #animalEditForm="ngForm" novalidate>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                   <div class="form-group">
@@ -75,11 +75,11 @@
               <div class="card-body -mb-15">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-info" (click)="editFinishedRequested(); hasBeenEdited();" data-dismiss="modal">Finish Editing</button>
+                    <button type="button" class="btn btn-sm btn-outline-info" (click)="hasBeenEdited()" data-dismiss="modal">Finish Editing</button>
                   </div>
                   <small class="text-muted">{{childTimestamp.getTimestamp() | date:"MM/dd hh:mm a"}}</small>
                 </div>
-                <small [hidden]="animalForm.form.valid" class="text-muted">Form <strong>must</strong> be filled out to add an animal!</small>
+                <small [hidden]="animalEditForm.form.valid" class="text-muted">Form <strong>must</strong> be filled out to add an animal!</small>
               </div>
             </form>
           </div>

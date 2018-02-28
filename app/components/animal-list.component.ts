@@ -13,9 +13,14 @@ export class AnimalListComponent {
   @Output() editRequest = new EventEmitter();
 
   filterByAge: string = "noFilter";
+  filterBySex: string = 'other';
 
-  onChange(optionFromMenu) {
+  onAgeChange(optionFromMenu) {
     this.filterByAge = optionFromMenu;
+  }
+
+  onSexChange(optionFromMenu) {
+    this.filterBySex = optionFromMenu;
   }
 
   editRequested(animalToEdit: Animal) { this.editRequest.emit(animalToEdit); }

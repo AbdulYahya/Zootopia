@@ -29,10 +29,6 @@ const buildProduction = utilities.env.production;
 
 ////////////////////// TYPESCRIPT //////////////////////
 
-// gulp.task('ts:clean', () => {
-//   return del(['build/compiled_ts']);
-// });
-
 gulp.task('ts:htmlClean', () => {
   return del(['build/*.html']);
 });
@@ -47,22 +43,6 @@ gulp.task('ts:compile', ['ts:html'], shell.task([
 ]));
 
 
-/*
-*   Purpose: Clean up app directory
-*
-*   Issue: Not working because, by moving all of the .js & .js.map files
-*          from the app dir after the fact (ts:compile) all the links are broken
-*
-*   e.g., (main.ts): import { AppModule } from './app.module' can no longer
-*                    find .js & .js.map files because we moved them....
-*/
-
-// gulp.task('ts', ['ts:compile'], () => {
-//   return gulp.src(['app/**/**.js', 'app/**/**.js.map'])
-//     .pipe(vinylPaths(del))
-//     .pipe(gulp.dest('build/compiled_ts'));
-// });
-
 ////////////////////// BOWER //////////////////////
 
 
@@ -73,7 +53,7 @@ gulp.task('bower:jsClean', () => {
 gulp.task('bower:js', ['bower:jsClean'], () => {
   return gulp.src(lib.ext('js').files)
     .pipe(concat('vendor.min.js'))
-    // .pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest('./build/js'));
 });
 
@@ -92,18 +72,6 @@ gulp.task('bower:css', ['bower:cssClean'], () => {
 });
 
 gulp.task('bower', ['bower:js', 'bower:css']);
-
-
-////////////////////// JAVASCRIPT //////////////////
-
-gulp.task('js:clean', () => {
-  return del(['build/js/*.js', '!build/js/*.min.js']);
-});
-
-gulp.task('js:build', ['js:clean'], () => {
-  return gulp.src(['resources/js/*.js'])
-    .pipe(gulp.dest('build/js'));
-});
 
 
 ////////////////////// SASS //////////////////////
@@ -144,15 +112,10 @@ gulp.task('serve', ['build'], () => {
   gulp.watch(['*.html', 'app/views/*.html'], ['htmlBuild']); // Reload on any HTML changes.
   gulp.watch(['resources/styles/*.css', 'resources/styles/*.scss'], ['cssBuild']); // Reload on any CSS/SCSS changes
   gulp.watch(['resources/images/*.png', 'resources/images/*.jpg', 'resources/images/*.svg'], ['imgBuild']); // Reload on any PNG/JPG/SVG changes.
-  gulp.watch(['resources/js/*.js'], ['jsBuild']); // Reload on any Vanilla JS changes.
   gulp.watch(['app/**/**.ts'], ['tsBuild']); // Compile & Reload on any Typescript file changes.
 });
 
 gulp.task('htmlBuild', ['ts:html'], () => {
-  browserSync.reload();
-});
-
-gulp.task('jsBuild', ['js:build'], () => {
   browserSync.reload();
 });
 
@@ -173,7 +136,6 @@ gulp.task('tsBuild', ['ts:compile'], () => {
 gulp.task('build', ['ts:compile'], () => {
   // Production tag conditionals will go here
   gulp.start('bower');
-  gulp.start('js:build');
   gulp.start('sassBuild');
   gulp.start('minifyImages');
 });

@@ -1,11 +1,11 @@
 <p align="center"><img width="12.5%" src="resources/images/zoo_logo.svg"></p>
-<p align="center"><img width="60%" src="assets/images/BetterDoc_logo.png"></p>
+<p align="center"><img width="60%" src="resources/images/zootopia_logo.png"></p>
 
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![Project Version](https://img.shields.io/badge/Ver.-0.1.0-brightgreen.svg?style=for-the-badge)](https://github.com/AbdulYahya/js-gulp-gen)
-
+&nbsp;&nbsp;&nbsp;&nbsp;
 [![GitHub issues](https://img.shields.io/github/issues/AbdulYahya/js-gulp-gen.svg?style=for-the-badge)](https://github.com/AbdulYahya/js-gulp-gen/issues)
-
+&nbsp;&nbsp;&nbsp;&nbsp;
 [![GitHub license](https://img.shields.io/github/license/AbdulYahya/gulp-boilerplate-gen.svg?style=for-the-badge)](https://ayahya.mit-license.org)
 
 

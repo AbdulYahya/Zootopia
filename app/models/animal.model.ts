@@ -14,7 +14,7 @@ export class Animal {
     public location: string,
     public caretakers: number,
     public sex: string,
-    public likes: string, // public likes: []?  have user separate input with commas then split string into an array?
-    public dislikes: string // public dislikes: []?
+    public likes: string,
+    public dislikes: string
   ) { }
 }

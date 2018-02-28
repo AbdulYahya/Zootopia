@@ -9,10 +9,10 @@ import { Timestamp } from '../models/timestamp.model';
 
 export class AppComponent {
   masterAnimalList: Animal[] = [
-    new Animal('Carne Asada', 'Fries', 1, 'Carnivore', 'Winterfell', 3, 'Food', 'Chillin', 'Not chillin'),
-    new Animal('Carne Asada', 'Burrito', 3, 'Carnivore', 'Winterfell', 3, 'Food', 'Chillin', 'Not chillin'),
-    new Animal('Carne Asada', 'Taco', 5, 'Carnivore', 'Winterfell', 3, 'Food', 'Chillin', 'Not chillin'),
-
+    // new Animal('Carne Asada', 'Fries', 1, 'Carnivore', 'Winterfell', 3, 'Food', 'Chillin', 'Not chillin'),
+    // new Animal('Carne Asada', 'Burrito', 3, 'Carnivore', 'Winterfell', 3, 'Food', 'Chillin', 'Not chillin'),
+    // new Animal('Carne Asada', 'Taco', 5, 'Carnivore', 'Winterfell', 3, 'Food', 'Chillin', 'Not chillin'),
+    //
   ];
   cTimestamp: Timestamp = new Timestamp();
 

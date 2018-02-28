@@ -19,5 +19,4 @@ export class AnimalListComponent {
   }
 
   editRequested(animalToEdit: Animal) { this.editRequest.emit(animalToEdit); }
-
 }

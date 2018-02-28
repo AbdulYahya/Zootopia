@@ -17,7 +17,7 @@
 First, clone this repo:
 
 ```sh
-$ git clone https://github.com/AbdulYahya/zootopia.git
+$ git clone https://github.com/AbdulYahya/Zootopia.git
 ```
 
 From your terminal, cd into the directory you just cloned:
@@ -25,7 +25,7 @@ From your terminal, cd into the directory you just cloned:
 > :children_crossing: Path below is just an example an likely doesn't exist, unless of course you cloned into you desktop.
 
 ```sh
-$ cd ~/Desktop/zootopia
+$ cd ~/Desktop/Zootopia
 ```
 
 Install all npm and bower package:
